@@ -1,20 +1,39 @@
 <div id="app">
   <h2>{{message}}, hello world</h2>
-  <button-counter></button-counter>
+  <!-- <button-counter></button-counter> -->
   <div>
     <router-link to="/foo">click to foo</router-link>
     <router-link to="/bar">click to bar</router-link>
+    <router-link to="/button">click to button</router-link>
   </div>
   <router-view></router-view>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 <script>
-  const Bar = { template: '<p>这是第二个页面</p>' }
+  const Bar = { props: ['count'],template: '<p>这是第二个页面{{count}}</p>' }
   const Foo = { template: '<p>这是第一个页面</p>' } 
+  const button_counter = {
+    data: function() {
+      return {
+        count: 0
+      }
+    },
+    template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+  }
+  //注册组件
+  Vue.component('button_counter', {
+    data: function () {
+      return {
+        count: 0
+      }
+    },
+    template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+  })
   const routes = [
     {path: '/foo', component: Foo},
-    {path: '/bar', component: Bar}
+    {path: '/bar', component: Bar},
+    {path: '/button', component: button_counter}
   ]
   const router = new VueRouter({
     routes
@@ -24,15 +43,7 @@
   //   '/about': About
   // }
 
-  //注册组件
-  Vue.component('button-counter', {
-    data: function () {
-      return {
-        count: 0
-      }
-    },
-    template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
-  })
+  
   var app = new Vue({
     // el: '#app',
     data: {
