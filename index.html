@@ -1,5 +1,16 @@
 <div id="app">
   <h2>{{message}}, hello world</h2>
+  <span v:bind="message">
+    鼠标悬停查看信息
+  </span>
+  <p v-if="seen">现在你能看到我了</p>
+  <div>
+    <ol>
+      <li v-for="todo in todos">
+        {{todo.text}}
+      </li>
+    </ol>
+  </div>
   <!-- <button-counter></button-counter> -->
   <div>
     <router-link to="/foo">click to foo</router-link>
@@ -22,14 +33,14 @@
     template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
   }
   //注册组件
-  Vue.component('button_counter', {
-    data: function () {
-      return {
-        count: 0
-      }
-    },
-    template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
-  })
+  // Vue.component('button_counter', {
+  //   data: function () {
+  //     return {
+  //       count: 0
+  //     }
+  //   },
+  //   template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+  // })
   const routes = [
     {path: '/foo', component: Foo},
     {path: '/bar', component: Bar},
@@ -48,6 +59,14 @@
     // el: '#app',
     data: {
       message: 'yuxuan',
+      seen: true,
+      todos: [{
+        text: '学习js'
+      }, {
+        text: '学习vue'
+      }, {
+        text: '学习code'
+      }]
     },
     router 
   }).$mount('#app');
