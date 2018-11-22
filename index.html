@@ -3,6 +3,9 @@
   <span v:bind="message">
     鼠标悬停查看信息
   </span>
+  <button v-on:click="counter += 1">+1</button>
+  <p>上面的按钮已经被点击{{counter}}次</p>
+  <button v-on:click="greet">Greet</button>
   <p v-if="seen">现在你能看到我了</p>
   <div>
     <ol>
@@ -60,6 +63,7 @@
     data: {
       message: 'yuxuan',
       seen: true,
+      counter: 0,
       todos: [{
         text: '学习js'
       }, {
@@ -67,6 +71,14 @@
       }, {
         text: '学习code'
       }]
+    },
+    methods: {
+      greet: function(event) {
+        alert('hello' + this.message + '!')
+        if(event){
+          alert(event.target.tagName)
+        }
+      }
     },
     router 
   }).$mount('#app');
