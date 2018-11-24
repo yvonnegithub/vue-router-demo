@@ -14,6 +14,9 @@
       </li>
     </ol>
   </div>
+  <ol>
+    <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+  </ol>
   <!-- <button-counter></button-counter> -->
   <div>
     <router-link to="/foo">click to foo</router-link>
@@ -36,6 +39,10 @@
     template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
   }
   //注册组件
+  Vue.component('todo-item', {
+    props: ['todo'],
+    template: `<li>{{todo.text}}</li>`
+  })
   // Vue.component('button_counter', {
   //   data: function () {
   //     return {
@@ -70,6 +77,16 @@
         text: '学习vue'
       }, {
         text: '学习code'
+      }],
+      groceryList: [{
+        id: 0,
+        text: '菠菜'
+      }, {
+        id: 1,
+        text: '奶酪'
+      }, {
+        id: 2,
+        text: '其他随便什么东西'
       }]
     },
     methods: {
