@@ -17,6 +17,8 @@
   <ol>
     <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item>
   </ol>
+  <button v-on:click="say('hi')">Say hi</button>
+  <button v-on:click="warn('warn yet!!', $event)"></button>
   <!-- <button-counter></button-counter> -->
   <div>
     <router-link to="/foo">click to foo</router-link>
@@ -94,6 +96,15 @@
         alert('hello' + this.message + '!')
         if(event){
           alert(event.target.tagName)
+        }
+      },
+      say: function(message) {
+        alert(message)
+      },
+      warn: function(message, event) {
+        if(event){
+          event.preventDefault()
+          alert(message)
         }
       }
     },
