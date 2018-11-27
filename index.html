@@ -108,6 +108,11 @@
         }
       }
     },
+    compute: {
+      reversedMessage: function(){
+        return this.message.split('').reverse().join('')
+      }
+    },
     router 
   }).$mount('#app');
   
