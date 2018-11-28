@@ -25,6 +25,20 @@
     <router-link to="/bar">click to bar</router-link>
     <router-link to="/button">click to button</router-link>
   </div>
+
+  <input v-model="message" placeholder="edit me" >
+  <p>Message is: {{ message }}</p>
+  <div class="example-2">
+    <input type="checkbox" id="jack" value="jack" v-model="checkedNames">
+    <label for="jack"></label>
+    <input type="checkbox" id="john" value="john" v-model="checkedNames">
+    <label for="john"></label>
+    <input type="checkbox" id="mike" value="mike" v-model="checkedNames">
+    <label for="mike"></label>
+    <br>
+    <span>Checked names: {{ checkedNames }}</span>
+  </div>
+  <input v-model="">
   <router-view></router-view>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -71,6 +85,7 @@
     // el: '#app',
     data: {
       message: 'yuxuan',
+      checkedNames: [],
       seen: true,
       counter: 0,
       todos: [{
