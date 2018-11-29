@@ -38,7 +38,15 @@
     <br>
     <span>Checked names: {{ checkedNames }}</span>
   </div>
-  <input v-model="">
+  <div class="example-4">
+    <select v-model="selected" multiple style="width:50px">
+      <option>A</option>
+      <option>B</option>
+      <option>C</option>
+    </select>
+    <br>
+    <span>Selected is {{selected}}</span>
+  </div>
   <router-view></router-view>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -86,6 +94,7 @@
     data: {
       message: 'yuxuan',
       checkedNames: [],
+      selected: [],
       seen: true,
       counter: 0,
       todos: [{
