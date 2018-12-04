@@ -121,6 +121,7 @@
         if(event){
           alert(event.target.tagName)
         }
+        this.$emit('myEvent')
       },
       say: function(message) {
         alert(message)
