@@ -39,3 +39,17 @@ Vue.component('async-example', function (resolve, reject) {
     })
   }, 1000)
 })
+Vue.component('anchored-heading', {
+  render: function (createElement) {
+    return createElement(
+      'h' + this.level,   // 标签名称
+      this.$slots.default // 子元素数组
+    )
+  },
+  props: {
+    level: {
+      type: Number,
+      required: true
+    }
+  }
+})
