@@ -17,6 +17,15 @@ const router = new VueRouter({
   ]
 })
 
+const User = {
+  template: '<div>User {{ $route.params.id }}</div>'
+}
+const router = new VueRouter({
+  routes: [
+    { path: '/user/:id', component: User }
+  ]
+})
+
 new Vue({
   router,
   template: `
